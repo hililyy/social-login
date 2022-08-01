@@ -12,8 +12,6 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -36,8 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
 extension AppDelegate: GIDSignInDelegate {
@@ -54,29 +50,25 @@ extension AppDelegate: GIDSignInDelegate {
         
         // credential : google Id token/ access 를 위임을 부여 받음 --> 구글에서 전해준 토큰을 부여 받음
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        
-        // firebase 인증 정보로 등록하기 위해서 signIn
-        Auth.auth().signIn(with: credential) {[weak self] _, _ in
-            self?.showMainViewController()
+        let idToken = authentication.idToken
+
+        if LocalDataStore.localDataStore.getData() == "" {
+            // firebase 인증 정보로 등록하기 위해서 signIn
+            LocalDataStore.localDataStore.setData(newData: idToken ?? "")
+            Auth.auth().signIn(with: credential) {[weak self] _, _ in
+                self?.showMainViewController()
+            }
+        }
+        else {
+            self.showMainViewController()
         }
     }
     
-    func showMainViewController() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "HomeVC")
-//        vc.modalPresentationStyle = .fullScreen
-
-
-
-
-
-//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let vc = storyboard.instantiateViewController(identifier: "NameVC") as! NameVC
-//        let navi = UINavigationController(rootViewController: vc)
-//        navi.modalPresentationStyle = .fullScreen
-//        UIApplication.shared.windows.first?.rootViewController?.show(vc, sender: nil)
-//
-
+    private func showMainViewController() {
+        let story = UIStoryboard(name: "Main", bundle:nil)
+        let vc = story.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
 }

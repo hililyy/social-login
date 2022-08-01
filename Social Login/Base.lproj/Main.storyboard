@@ -36,48 +36,54 @@
             </objects>
             <point key="canvasLocation" x="180" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="aBc-WD-CiT">
             <objects>
-                <viewController id="gev-Px-CAF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="gev-Px-CAF" customClass="HomeViewController" customModule="Social_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LUQ-qE-E1P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XQ-mx-BiL">
-                                <rect key="frame" x="0.0" y="144" width="414" height="21"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-PM-bvL">
-                                <rect key="frame" x="0.0" y="195" width="414" height="21"/>
+                                <rect key="frame" x="0.0" y="194.5" width="414" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF0-Sk-9xy">
-                                <rect key="frame" x="94" y="353" width="82" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="LOGOUT"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHc-8H-Oy5">
-                                <rect key="frame" x="232" y="353" width="79" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="REVOKE"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-Ar-1xd">
+                                <rect key="frame" x="90" y="345" width="234" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF0-Sk-9xy">
+                                        <rect key="frame" x="0.0" y="0.0" width="117" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="LOGOUT"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHc-8H-Oy5">
+                                        <rect key="frame" x="117" y="0.0" width="117" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="REVOKE"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bJ2-l0-AaM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bJ2-l0-AaM" firstAttribute="trailing" secondItem="jgb-Ar-1xd" secondAttribute="trailing" constant="90" id="4tJ-Ug-YFP"/>
                             <constraint firstItem="2XQ-mx-BiL" firstAttribute="leading" secondItem="bJ2-l0-AaM" secondAttribute="leading" id="66k-9g-UCH"/>
                             <constraint firstItem="bJ2-l0-AaM" firstAttribute="trailing" secondItem="2XQ-mx-BiL" secondAttribute="trailing" id="76Y-4n-HMn"/>
+                            <constraint firstItem="jgb-Ar-1xd" firstAttribute="top" secondItem="8Jf-PM-bvL" secondAttribute="bottom" constant="130" id="Hzw-hk-ugI"/>
                             <constraint firstItem="2XQ-mx-BiL" firstAttribute="top" secondItem="bJ2-l0-AaM" secondAttribute="top" constant="100" id="JXO-Lt-vFf"/>
                             <constraint firstItem="bJ2-l0-AaM" firstAttribute="trailing" secondItem="8Jf-PM-bvL" secondAttribute="trailing" id="OPX-xX-64O"/>
                             <constraint firstItem="8Jf-PM-bvL" firstAttribute="leading" secondItem="bJ2-l0-AaM" secondAttribute="leading" id="ezv-rG-qSu"/>
                             <constraint firstItem="8Jf-PM-bvL" firstAttribute="top" secondItem="2XQ-mx-BiL" secondAttribute="bottom" constant="30" id="mBz-s6-dZ4"/>
+                            <constraint firstItem="jgb-Ar-1xd" firstAttribute="leading" secondItem="bJ2-l0-AaM" secondAttribute="leading" constant="90" id="oj0-HQ-DZC"/>
                         </constraints>
                     </view>
                 </viewController>
