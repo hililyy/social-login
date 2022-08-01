@@ -6,24 +6,38 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var userEmailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        userIdLabel.text = LocalDataStore.localDataStore.getData().userId
+        userEmailLabel.text = LocalDataStore.localDataStore.getData().userEmail
     }
     
+    @IBAction func logout(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        do {
+          // 로그아웃 시도하기
+            try firebaseAuth.signOut()
+            let story = UIStoryboard(name: "Main", bundle:nil)
+            let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! ViewController
+            UIApplication.shared.windows.first?.rootViewController = vc
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        } catch let signOutError as NSError {
+            print("ERROR: signout \(signOutError.localizedDescription)")
+        }
     }
-    */
-
+    
+    @IBAction func revoke(_ sender: Any) {
+        
+        
+    }
+    
 }

@@ -49,12 +49,19 @@ extension AppDelegate: GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         
         // credential : google Id token/ access 를 위임을 부여 받음 --> 구글에서 전해준 토큰을 부여 받음
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        let idToken = authentication.idToken
-
-        if LocalDataStore.localDataStore.getData() == "" {
+        
+        
+        
+        if LocalDataStore.localDataStore.getData().idToken == "" {
             // firebase 인증 정보로 등록하기 위해서 signIn
-            LocalDataStore.localDataStore.setData(newData: idToken ?? "")
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            let idToken = authentication.idToken
+            let userId = user.userID
+            let userEmail = user.profile.email
+            
+            let data = UserDataEntity(idToken: idToken, userId: userId, userEmail: userEmail)
+            
+            LocalDataStore.localDataStore.setData(newData: data)
             Auth.auth().signIn(with: credential) {[weak self] _, _ in
                 self?.showMainViewController()
             }

@@ -17,6 +17,7 @@
 		2AC6EAE42895A38A0062C8F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC6EAE32895A38A0062C8F0 /* GoogleService-Info.plist */; };
 		2AC6EAE82896F2790062C8F0 /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6EAE72896F2790062C8F0 /* LocalDataStore.swift */; };
 		2AC6EAEA2897C6F00062C8F0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6EAE92897C6F00062C8F0 /* HomeViewController.swift */; };
+		2AC6EAED2897D5410062C8F0 /* UserDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6EAEC2897D5410062C8F0 /* UserDataEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2AC6EAE32895A38A0062C8F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AC6EAE72896F2790062C8F0 /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
 		2AC6EAE92897C6F00062C8F0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2AC6EAEC2897D5410062C8F0 /* UserDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataEntity.swift; sourceTree = "<group>"; };
 		8045DBE7A57AEE2BADAD735A /* Pods_Social_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD74D7DD4A31A344B7144931 /* Pods-Social Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Login.debug.xcconfig"; path = "Target Support Files/Pods-Social Login/Pods-Social Login.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 				2AC6EAD82892C3880062C8F0 /* LaunchScreen.storyboard */,
 				2AC6EADB2892C3880062C8F0 /* Info.plist */,
 				2AC6EAE32895A38A0062C8F0 /* GoogleService-Info.plist */,
+				2AC6EAEC2897D5410062C8F0 /* UserDataEntity.swift */,
 			);
 			path = "Social Login";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				2AC6EAEA2897C6F00062C8F0 /* HomeViewController.swift in Sources */,
 				2AC6EAD22892C3860062C8F0 /* ViewController.swift in Sources */,
 				2AC6EAE82896F2790062C8F0 /* LocalDataStore.swift in Sources */,
+				2AC6EAED2897D5410062C8F0 /* UserDataEntity.swift in Sources */,
 				2AC6EACE2892C3860062C8F0 /* AppDelegate.swift in Sources */,
 				2AC6EAD02892C3860062C8F0 /* SceneDelegate.swift in Sources */,
 			);
