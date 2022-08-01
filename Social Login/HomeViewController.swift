@@ -26,8 +26,10 @@ class HomeViewController: UIViewController {
         do {
           // 로그아웃 시도하기
             try firebaseAuth.signOut()
+            let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
+            LocalDataStore.localDataStore.setData(newData: data)
             let story = UIStoryboard(name: "Main", bundle:nil)
-            let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! ViewController
+            let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
             UIApplication.shared.windows.first?.rootViewController = vc
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         } catch let signOutError as NSError {
@@ -36,7 +38,20 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func revoke(_ sender: Any) {
+        let user = Auth.auth().currentUser
         
+        do {
+            try user?.delete()
+            let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
+            LocalDataStore.localDataStore.setData(newData: data)
+            let story = UIStoryboard(name: "Main", bundle:nil)
+            let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+            UIApplication.shared.windows.first?.rootViewController = vc
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        } catch let signOutError as NSError {
+            print("ERROR: signout \(signOutError.localizedDescription)")
+        }
+
         
     }
     
