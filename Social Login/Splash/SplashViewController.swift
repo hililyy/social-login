@@ -10,34 +10,17 @@ import Firebase
 import GoogleSignIn
 
 class SplashViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    let model = ViewModel.viewModel
+    
     override func viewWillAppear(_ animated: Bool) {
         let idToken = LocalDataStore.localDataStore.getData().idToken
         let userId = LocalDataStore.localDataStore.getData().userId
         let userEmail = LocalDataStore.localDataStore.getData().userEmail
         
-        if(idToken == "" && userId == "" &&  userEmail == "") {
-            showMainViewController()
+        if idToken == "" && userId == "" &&  userEmail == "" {
+            model.showLoginViewController()
         } else {
-            showLoginViewController()
+            model.showMainViewController()
         }
     }
-    func showLoginViewController() {
-        let story = UIStoryboard(name: "Main", bundle:nil)
-        let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
-    
-    func showMainViewController() {
-        let story = UIStoryboard(name: "Main", bundle:nil)
-        let vc = story.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
 }
-

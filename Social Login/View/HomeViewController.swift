@@ -22,9 +22,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func logout(_ sender: Any) {
         let firebaseAuth = Auth.auth()
-
         do {
-          // 로그아웃 시도하기
             try firebaseAuth.signOut()
             let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
             LocalDataStore.localDataStore.setData(newData: data)
@@ -39,7 +37,6 @@ class HomeViewController: UIViewController {
     
     @IBAction func revoke(_ sender: Any) {
         let user = Auth.auth().currentUser
-        
         do {
             try user?.delete()
             let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
@@ -51,8 +48,5 @@ class HomeViewController: UIViewController {
         } catch let signOutError as NSError {
             print("ERROR: signout \(signOutError.localizedDescription)")
         }
-
-        
     }
-    
 }
