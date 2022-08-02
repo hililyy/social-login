@@ -12,4 +12,3 @@ protocol ChangeView {
     func showMainViewController()
     func showLoginViewController()
 }
-

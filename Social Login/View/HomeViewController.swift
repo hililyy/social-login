@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var userIdLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
+    let model = ViewModel.viewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,8 @@ class HomeViewController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
-            LocalDataStore.localDataStore.setData(newData: data)
-            let story = UIStoryboard(name: "Main", bundle:nil)
-            let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-            UIApplication.shared.windows.first?.rootViewController = vc
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            model.removeData()
+            model.showLoginViewController()
         } catch let signOutError as NSError {
             print("ERROR: signout \(signOutError.localizedDescription)")
         }
@@ -39,12 +36,8 @@ class HomeViewController: UIViewController {
         let user = Auth.auth().currentUser
         do {
             try user?.delete()
-            let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
-            LocalDataStore.localDataStore.setData(newData: data)
-            let story = UIStoryboard(name: "Main", bundle:nil)
-            let vc = story.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-            UIApplication.shared.windows.first?.rootViewController = vc
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            model.removeData()
+            model.showLoginViewController()
         } catch let signOutError as NSError {
             print("ERROR: signout \(signOutError.localizedDescription)")
         }

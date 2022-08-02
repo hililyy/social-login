@@ -13,6 +13,11 @@ import FirebaseCore
 class Model {
     static let model = Model()
     static let viewModel = ViewModel()
+    
+    func removeData() {
+        let data = UserDataEntity(idToken: "", userId: "", userEmail: "")
+        LocalDataStore.localDataStore.setData(newData: data)
+    }
 }
 
 extension Model: ChangeView {

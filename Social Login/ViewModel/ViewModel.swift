@@ -13,6 +13,10 @@ import FirebaseCore
 class ViewModel {
     let model = Model.model
     static let viewModel = ViewModel()
+    
+    func removeData() {
+        model.removeData()
+    }
 }
 
 extension ViewModel: ChangeView {
